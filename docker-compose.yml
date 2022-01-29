@@ -1,0 +1,28 @@
+version: "3"
+services:
+  broker:
+    container_name: mqtt
+    image: eclipse-mosquitto
+    restart: always
+    volumes:
+      - "./mosquitto:/mosquitto"
+    networks:
+      - heaven-iot
+    ports:
+      - "1883:1883"
+  node-red:
+    container_name: node_red
+    restart: always
+    depends_on:
+      - broker
+    image: nodered/node-red
+    volumes:
+      - "./node-red:/data"
+    user: "0"
+    networks:
+      - heaven-iot
+    ports:
+      - "1880:1880"
+networks:
+  heaven-iot:
+    name: heaven-iot

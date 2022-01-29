@@ -1,0 +1,203 @@
+[
+    {
+        "id": "950b89ade467fb81",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "f2b55bbeee90793c",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.2.42",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "efefaa2558e3dbc1",
+        "type": "mqtt out",
+        "z": "950b89ade467fb81",
+        "name": "",
+        "topic": "",
+        "qos": "2",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "text/plain",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "f2b55bbeee90793c",
+        "x": 910,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "c33b0ceb7beeb705",
+        "type": "inject",
+        "z": "950b89ade467fb81",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "test1",
+        "payloadType": "date",
+        "x": 450,
+        "y": 360,
+        "wires": [
+            [
+                "efefaa2558e3dbc1",
+                "d5c9f6843b456237"
+            ]
+        ]
+    },
+    {
+        "id": "3141b27f404de232",
+        "type": "debug",
+        "z": "950b89ade467fb81",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 800,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "e2e9aecfcddf6229",
+        "type": "mqtt in",
+        "z": "950b89ade467fb81",
+        "name": "",
+        "topic": "test_bme",
+        "qos": "0",
+        "datatype": "json",
+        "broker": "f2b55bbeee90793c",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 200,
+        "y": 660,
+        "wires": [
+            [
+                "e5f7023f6f96de40",
+                "f664eb0431ced8fb",
+                "08058cf160918737",
+                "d7631bc19f0719e8"
+            ]
+        ]
+    },
+    {
+        "id": "d5c9f6843b456237",
+        "type": "debug",
+        "z": "950b89ade467fb81",
+        "name": "sdf",
+        "active": false,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "e5f7023f6f96de40",
+        "type": "xml",
+        "z": "950b89ade467fb81",
+        "name": "",
+        "property": "payload",
+        "attr": "",
+        "chr": "",
+        "x": 460,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f664eb0431ced8fb",
+        "type": "csv",
+        "z": "950b89ade467fb81",
+        "name": "",
+        "sep": ",",
+        "hdrin": "",
+        "hdrout": "none",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 500,
+        "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "08058cf160918737",
+        "type": "yaml",
+        "z": "950b89ade467fb81",
+        "property": "payload",
+        "name": "",
+        "x": 440,
+        "y": 620,
+        "wires": [
+            [
+                "3141b27f404de232"
+            ]
+        ]
+    },
+    {
+        "id": "d7631bc19f0719e8",
+        "type": "json",
+        "z": "950b89ade467fb81",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": true,
+        "x": 480,
+        "y": 720,
+        "wires": [
+            [
+                "3141b27f404de232"
+            ]
+        ]
+    }
+]
